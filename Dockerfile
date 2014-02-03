@@ -9,6 +9,7 @@ RUN dpkg-divert --local --rename --add /sbin/initctl && ln -s /bin/true /sbin/in
 
 #Supervisord
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y supervisor && mkdir -p /var/log/supervisor
+ADD supervisord-ssh.conf /etc/supervisor/conf.d/
 CMD ["/usr/bin/supervisord", "-n"]
 
 #SSHD
@@ -16,8 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server &&	mkdir /v
 	echo 'root:root' |chpasswd
 
 #Utilities
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y vim less net-tools inetutils-ping curl git telnet nmap socat dnsutils netcat tree htop unzip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y vim less net-tools inetutils-ping curl git telnet nmap socat dnsutils netcat tree htop unzip sudo
 
-ADD supervisord-ssh.conf /etc/supervisor/conf.d/supervisord-ssh.conf
 
 EXPOSE 22
