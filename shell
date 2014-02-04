@@ -1,1 +1,1 @@
-docker run -v /var/run:/hrv -p 49222:22 -i -t ssh /bin/bash
+docker run -rm=true -i -t ssh /bin/bash
