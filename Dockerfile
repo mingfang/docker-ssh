@@ -16,7 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server &&	mkdir /v
 	echo 'root:root' |chpasswd
 
 #Utilities
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y vim less net-tools inetutils-ping curl git telnet nmap socat dnsutils netcat tree htop unzip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y vim less net-tools inetutils-ping curl git telnet nmap socat dnsutils netcat tree htop unzip sudo
 
 ADD supervisord-ssh.conf /etc/supervisor/conf.d/supervisord-ssh.conf
 
