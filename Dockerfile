@@ -5,11 +5,10 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu precise main universe' > /etc/apt
     apt-get update
 
 #Prevent daemon start during install
-RUN dpkg-divert --local --rename --add /sbin/initctl && ln -s /bin/true /sbin/initctl
+RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
 
 #Supervisord
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y supervisor && mkdir -p /var/log/supervisor
-ADD supervisord-ssh.conf /etc/supervisor/conf.d/
 CMD ["/usr/bin/supervisord", "-n"]
 
 #SSHD
@@ -19,5 +18,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server &&	mkdir /v
 #Utilities
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y vim less net-tools inetutils-ping curl git telnet nmap socat dnsutils netcat tree htop unzip sudo
 
+#Configuration
+ADD . /docker
+RUN ln -s /docker/supervisord-ssh.conf /etc/supervisor/conf.d/supervisord-ssh.conf
 
 EXPOSE 22
