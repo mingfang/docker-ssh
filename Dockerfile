@@ -28,4 +28,6 @@ exec /usr/bin/svlogd -tt /var/log/ssh\
 " > /etc/sv/ssh/log/run
 RUN chmod +x /etc/sv/ssh/run /etc/sv/ssh/log/run && ln -s /etc/sv/ssh /etc/service/
 
+ENV HOME /root
+WORKDIR /root
 EXPOSE 22
