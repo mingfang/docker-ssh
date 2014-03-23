@@ -17,8 +17,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y vim less net-tools inetuti
 
 #Configuration
 ADD . /docker
-#Runit
-RUN chmod +x /docker/sv/ssh/run /docker/sv/ssh/log/run && ln -s /docker/sv/ssh /etc/service/
+
+#Runit Automatically setup all services in the sv directory
+RUN for dir in /docker/sv/*; do echo $dir; chmod +x $dir/run $dir/log/run; ln -s $dir /etc/service/; done
 
 ENV HOME /root
 WORKDIR /root
