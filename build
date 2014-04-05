@@ -1,1 +1,1 @@
-docker build -rm=true -t ssh .
+docker build -t ssh .
