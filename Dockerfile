@@ -1,8 +1,6 @@
 FROM ubuntu
  
-RUN echo 'deb http://archive.ubuntu.com/ubuntu precise main universe' > /etc/apt/sources.list && \
-    echo 'deb http://archive.ubuntu.com/ubuntu precise-updates main universe' >> /etc/apt/sources.list && \
-    apt-get update
+RUN apt-get update
 
 #Runit
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y runit 

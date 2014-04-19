@@ -1,1 +1,1 @@
-docker run -d -t -P ssh
+docker run -d -t ssh
