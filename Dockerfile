@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:13.10
  
 RUN apt-get update
 
