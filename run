@@ -1,1 +1,1 @@
-docker run -v `pwd`/log:/var/log -d -t ssh
+docker run -v /var/log:/var/log -d -t ssh
