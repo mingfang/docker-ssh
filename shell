@@ -1,1 +1,1 @@
-docker run -v `pwd`:/docker --rm -i -t ssh /bin/bash
+docker run -v `pwd`:/docker -w /docker --rm -i -t ssh /bin/bash
