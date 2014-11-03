@@ -2,6 +2,7 @@ FROM ubuntu:14.04
  
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
+RUN locale-gen en_US en_US.UTF-8
 
 #Runit
 RUN apt-get install -y runit 
